@@ -4,61 +4,68 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DSA Overview</title>
-   <link rel="stylesheet" href="src/output.css">
+    <link rel="stylesheet" href="src/output.css">
   </head>
   <body class="bg-gray-100">
     <!-- Header -->
-    <header class="bg-blue-900 p-4 text-white">
-      <nav class="flex items-center justify-between">
-        <h1 class="text-2xl font-bold">DSA Overview</h1>
-
-      </nav>
+    <header class="text-white body-font bg-gradient-to-r from-indigo-800 to-blue-600 shadow-lg">
+      <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+        <a href="#" class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
+          <img src="images/connection.png" alt="Logo" class="h-10">
+          <span class="ml-3 text-xl">DSA Learner</span>
+        </a>
+        <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+          <a href="#" class="mr-5 hover:text-yellow-300 font-semibold">Home</a>
+          <a href="#" class="mr-5 hover:text-yellow-300 font-semibold">About Us</a>
+          <a href="#" class="mr-5 hover:text-yellow-300 font-semibold">Contact Us</a>
+        </nav>
+      </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="bg-gradient-to-r from-purple-500 to-blue-500 py-10 md:py-20">
+    <section class="bg-gradient-to-r from-purple-500 to-blue-500 py-10 md:py-20 min-h-screen">
       <div class="container mx-auto flex flex-col md:flex-row items-center justify-between px-4">
         <!-- Text Section -->
-        <div class="text-center md:text-left md:w-1/2 mb-10 md:mb-0 text-white">
+        <div class="text-center md:text-left md:w-1/2 w-full mb-10 md:mb-0 text-white">
           <h2 class="mb-4 text-3xl md:text-5xl font-extrabold text-yellow-300 tracking-wide drop-shadow-lg animate-pulse">
-  Master Data Structures
-</h2>
+            Master Data Structures
+          </h2>
 
-<!-- Animated Paragraph -->
-<p class="mb-8 text-xl md:text-xl text-gray-200">
-  <span class="typewriter">Learn and access code for all data structures in 
-    <span class="text-green-300 font-semibold">C</span>, 
-    <span class="text-blue-300 font-semibold">C++</span>, 
-    and 
-    <span class="text-red-300 font-semibold">Python</span>.
-  </span>
-</p>
+          <!-- Animated Paragraph -->
+          <p class="mb-8 text-xl md:text-2xl text-gray-200">
+            <span class="typewriter">Learn and access code for all data structures in 
+              <span class="text-green-300 font-semibold">C</span>, 
+              <span class="text-blue-300 font-semibold">C++</span>, 
+              and 
+              <span class="text-red-300 font-semibold">Python</span>.
+            </span>
+          </p>
 
-<!-- CSS for the typing animation -->
-<style>
-  .typewriter {
-    display: inline-block;
-    border-right: 2px solid white; /* Cursor effect */
-    white-space: nowrap;
-    overflow: hidden;
-    width: 0;
-    animation: typing 6s steps(60, end) 1s infinite, blink-caret 0.75s step-end infinite;
-  }
+          <!-- CSS for the typing animation -->
+          <style>
+            .typewriter {
+              display: inline-block;
+              border-right: 2px solid white; /* Cursor effect */
+              white-space: nowrap;
+              overflow: hidden;
+              width: 0;
+              animation: typing 6s steps(60, end) 1s infinite, blink-caret 0.75s step-end infinite;
+            }
 
-  @keyframes typing {
-    from { width: 0; }
-    to { width: 100%; }
-  }
+            @keyframes typing {
+              from { width: 0; }
+              to { width: 100%; }
+            }
 
-  @keyframes blink-caret {
-    from, to { border-color: transparent; }
-    50% { border-color: white; }
-  }
-</style>
-
+            @keyframes blink-caret {
+              from, to { border-color: transparent; }
+              50% { border-color: white; }
+            }
+          </style>
 
           <button onclick="window.location.href='signin.html'" class="rounded bg-yellow-400 px-6 py-3 font-bold text-gray-900 hover:bg-yellow-500">Get Started</button>
         </div>
+
         <!-- Image Section -->
         <div class="md:w-1/2 w-full">
           <img src="https://learnerbits.com/wp-content/uploads/2023/06/dsa.png" alt="Data Structures" class="w-full h-auto" />
@@ -69,7 +76,7 @@
     <!-- Footer -->
     <footer class="bg-gray-800 py-4 text-center text-white">
       <h3 class="text-lg font-semibold">Contributors</h3>
-      <div class="flex justify-center mt-3 pt-3 gap-4">
+      <div class="flex flex-wrap justify-center mt-3 pt-3 gap-4">
         <div class="mx-2 text-center">
           <img src="https://wallpapercave.com/wp/wp9259349.jpg" alt="Contributor" class="mx-auto h-16 w-16 rounded-full" />
           <p class="mt-2">Archit Gandotra</p>

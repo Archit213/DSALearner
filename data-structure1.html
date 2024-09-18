@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Structures</title>
+  <link rel="stylesheet" href="src/output.css">
+  <style>
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in-up {
+      animation: fadeInUp 1s ease-in-out;
+    }
+  </style>
+</head>
+
+<body class="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white min-h-screen">
+
+  <!-- Navbar -->
+  <header class="text-white body-font bg-gradient-to-r from-indigo-800 to-blue-600 shadow-lg">
+    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+      <a href="#" class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
+        <img src="images/connection.png" alt="Logo" class="h-10">
+        <span class="ml-3 text-xl">DSA Learner</span>
+      </a>
+      <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+        <a href="#" class="mr-5 hover:text-yellow-300 font-semibold">Home</a>
+        <a href="#" class="mr-5 hover:text-yellow-300 font-semibold">About Us</a>
+        <a href="#" class="mr-5 hover:text-yellow-300 font-semibold">Contact Us</a>
+      </nav>
+       <div class="relative">
+        <input id="searchInput" type="text" placeholder="Data Structures" class="w-48 p-2 rounded-lg focus:ring-2 focus:ring-yellow-300 focus:outline-none text-gray-900">
+        <button onclick="handleSearch()" class="absolute right-2 top-2 text-gray-500 hover:text-gray-900">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M12.9 14.32a8 8 0 111.414-1.415l4.348 4.348a1 1 0 01-1.415 1.415l-4.347-4.348zM8 14A6 6 0 108 2a6 6 0 000 12z" clip-rule="evenodd" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Section: Data Structures -->
+  <section class="text-gray-100 body-font fade-in-up">
+    <div class="container px-5 py-24 mx-auto">
+      <div class="flex flex-wrap w-full mb-20 fade-in-up">
+        <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
+          <h1 class="sm:text-4xl text-3xl font-bold title-font mb-2 text-white">Data Structures</h1>
+          <div class="h-1 w-20 bg-yellow-300 rounded"></div>
+        </div>
+        <p class="lg:w-1/2 w-full leading-relaxed text-base text-gray-200">Data structures in computer programming are specialized formats for organizing, managing, and storing data efficiently. They are essential for optimizing various operations such as data retrieval, insertion, and deletion. Common data structures include arrays, linked lists, stacks, queues, trees, and graphs, each offering unique advantages for different use cases. By choosing the appropriate data structure, programmers can enhance performance and resource utilization, making their algorithms more effective and scalable. Understanding and utilizing data structures is crucial for solving complex problems and developing efficient software applications.</p>
+      </div>
+
+      <div id="dataStructureSection" class="flex flex-wrap -m-4">
+        <!-- Example Cards -->
+        <div data-structure="array" class="xl:w-1/4 md:w-1/2 p-4 fade-in-up">
+          <div class="bg-white p-6 rounded-lg shadow-lg">
+            <img class="h-40 rounded w-full object-cover object-center mb-6" src="images/array.png" alt="Array">
+            <h2 class="text-lg font-bold title-font mb-4 text-center text-gray-900">Array</h2>
+            <p class="leading-relaxed text-base text-gray-700">A collection of elements stored in contiguous memory locations, allowing for fast access by index.</p>
+            <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mt-4">Get Code</button>
+          </div>
+        </div>
+        <!-- Linked List -->
+        <div data-structure="linked list" class="xl:w-1/4 md:w-1/2 p-4 fade-in-up">
+          <div class="bg-white p-6 rounded-lg shadow-lg">
+            <img class="h-40 rounded w-full object-cover object-center mb-6" src="images/Linkedlist.png" alt="Array">
+            <h2 class="text-lg font-bold title-font mb-4 text-center text-gray-900">Linked List</h2>
+            <p class="leading-relaxed text-base text-gray-700">A linear structure consisting of nodes where each node points to the next, enabling efficient dynamic insertions and deletions.</p>
+            <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mt-4">Get Code</button>
+          </div>
+        </div>
+        <!-- Stack -->
+        <div data-structure="stack" class="xl:w-1/4 md:w-1/2 p-4 fade-in-up">
+          <div class="bg-white p-6 rounded-lg shadow-lg">
+            <img class="h-40 rounded w-full object-cover object-center mb-6" src="images/Stack.png" alt="Array">
+            <h2 class="text-lg font-bold title-font mb-4 text-center text-gray-900">Stack</h2>
+            <p class="leading-relaxed text-base text-gray-700">A collection that follows the Last In, First Out (LIFO) principle, with operations restricted to the top of the stack.</p>
+            <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mt-4">Get Code</button>
+          </div>
+        </div>
+        <!-- Queue -->
+        <div data-structure="queue" class="xl:w-1/4 md:w-1/2 p-4 fade-in-up">
+          <div class="bg-white p-6 rounded-lg shadow-lg">
+            <img class="h-40 rounded w-full object-cover object-center mb-6" src="images/queue.png" alt="Array">
+            <h2 class="text-lg font-bold title-font mb-4 text-center text-gray-900">Queue</h2>
+            <p class="leading-relaxed text-base text-gray-700">A collection that follows the First In, First Out (FIFO) principle, with elements added at the rear and removed from the front.</p>
+            <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mt-4">Get Code</button>
+          </div>
+        </div>
+        <!-- Hash Table -->
+        <div data-structure="hash table" class="xl:w-1/4 md:w-1/2 p-4 fade-in-up">
+          <div class="bg-white p-6 rounded-lg shadow-lg">
+            <img class="h-40 rounded w-full object-cover object-center mb-6" src="images/hash-table.png" alt="Array">
+            <h2 class="text-lg font-bold title-font mb-4 text-center text-gray-900">Hash Table</h2>
+            <p class="leading-relaxed text-base text-gray-700">A data structure that maps keys to values using a hash function, providing average-case constant time complexity for lookups and insertions.</p>
+            <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mt-4">Get Code</button>
+          </div>
+        </div>
+        <!-- Binary Tree -->
+        <div data-structure="binary tree" class="xl:w-1/4 md:w-1/2 p-4 fade-in-up">
+          <div class="bg-white p-6 rounded-lg shadow-lg">
+            <img class="h-40 rounded w-full object-cover object-center mb-6" src="images/binary tree.jpeg" alt="Array">
+            <h2 class="text-lg font-bold title-font mb-4 text-center text-gray-900">Binary Tree</h2>
+            <p class="leading-relaxed text-base text-gray-700">A hierarchical structure where each node has at most two children, used for efficient data representation and retrieval</p>
+            <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mt-4">Get Code</button>
+          </div>
+        </div>
+        <!-- Binary Tree Search -->
+        <div data-structure="binary search tree" class="xl:w-1/4 md:w-1/2 p-4 fade-in-up">
+          <div class="bg-white p-6 rounded-lg shadow-lg">
+            <img class="h-40 rounded w-full object-cover object-center mb-6" src="images/binary search tree.jpeg" alt="Array">
+            <h2 class="text-lg font-bold title-font mb-4 text-center text-gray-900">Binary Search Tree</h2>
+            <p class="leading-relaxed text-base text-gray-700">A binary tree where each node's left children are smaller and right children are larger, facilitating efficient searching and sorting.</p>
+            <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mt-4">Get Code</button>
+          </div>
+        </div>
+        <!-- Heap -->
+        <div data-structure="heap" class="xl:w-1/4 md:w-1/2 p-4 fade-in-up">
+          <div class="bg-white p-6 rounded-lg shadow-lg">
+            <img class="h-40 rounded w-full object-cover object-center mb-6" src="images/MinHeapandMaxHeap.png" alt="Array">
+            <h2 class="text-lg font-bold title-font mb-4 text-center text-gray-900">Heap</h2>
+            <p class="leading-relaxed text-base text-gray-700">A specialized tree-based structure that maintains a specific order property, used for priority-based operations and heap sort.</p>
+            <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mt-4">Get Code</button>
+          </div>
+        </div>
+        <!-- Graph -->
+        <div data-structure="graph" class="xl:w-1/4 md:w-1/2 p-4 fade-in-up">
+          <div class="bg-white p-6 rounded-lg shadow-lg">
+            <img class="h-40 rounded w-full object-cover object-center mb-6" src="images/graph.jpeg" alt="Array">
+            <h2 class="text-lg font-bold title-font mb-4 text-center text-gray-900">Graph</h2>
+            <p class="leading-relaxed text-base text-gray-700">A collection of nodes connected by edges, used to model and analyze relationships and networks.</p>
+            <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mt-4">Get Code</button>
+          </div>
+        </div>
+        <!-- Trie -->
+        <div data-structure="trie" class="xl:w-1/4 md:w-1/2 p-4 fade-in-up">
+          <div class="bg-white p-6 rounded-lg shadow-lg">
+            <img class="h-40 rounded w-full object-cover object-center mb-6" src="images/trie.png" alt="Array">
+            <h2 class="text-lg font-bold title-font mb-4 text-center text-gray-900">Trie</h2>
+            <p class="leading-relaxed text-base text-gray-700">A prefix tree that stores strings in a way that nodes represent common prefixes, enabling efficient prefix-based searches and retrievals.</p>
+            <button type="button" class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mt-4">Get Code</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- JavaScript for handling search -->
+    <script>
+      function handleSearch() {
+        const query = document.getElementById("searchInput").value.toLowerCase();
+        
+        // Select all cards
+        const cards = document.querySelectorAll('[data-structure]');
+        
+        let found = false;
+    
+        // Loop through each card
+        cards.forEach(card => {
+          const dataStructure = card.getAttribute('data-structure');
+    
+          if (dataStructure.includes(query)) {
+            card.style.display = "block";  // Show the card
+            found = true;
+          } else {
+            card.style.display = "none";   // Hide the card
+          }
+        });
+    
+        // If no results, you can show a message or handle it however you like
+        if (!found) {
+          alert("No results found for: " + query);
+        }
+      }
+    </script>
+  
+
+</body>
+
+</html>
