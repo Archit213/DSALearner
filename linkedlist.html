@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Structure: Linked List</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+    />
+    <style>
+      /* Syntax highlighting for code */
+      .keyword {
+        color: #ff7f50;
+        font-weight: bold;
+      }
+      .variable {
+        color: #00bfff;
+        font-weight: bold;
+      }
+      .function {
+        color: #32cd32;
+        font-weight: bold;
+      }
+      .comment {
+        color: #999;
+        font-style: italic;
+      }
+      .type {
+        color: #ff4500;
+        font-weight: bold;
+      }
+    </style>
+    <script defer>
+      // JavaScript to handle menu selection and dynamic content display
+      function displayCode(language) {
+        const sections = document.querySelectorAll(".code-section");
+        sections.forEach((section) => {
+          section.style.display = "none";
+        });
+        document.getElementById(language).style.display = "block";
+        document.getElementById("heading").innerText = `${language} - Linked List Data Structure`;
+        toggleMenu(); // Hide the menu after a selection
+      }
+
+      // Ensure the page loads with a default language (C in this case)
+      window.onload = () => {
+        displayCode("C");
+      };
+
+      // Toggle the hamburger menu visibility
+      function toggleMenu() {
+        const menu = document.getElementById("menu");
+        menu.classList.toggle("hidden");
+      }
+    </script>
+  </head>
+  <body class="bg-gray-100 text-gray-800">
+    <!-- Header -->
+    <header class="bg-indigo-600 text-white p-4">
+      <div class="container mx-auto flex justify-between items-center">
+        <h1 id="heading" class="text-xl font-bold">C - Linked List Data Structure</h1>
+        <!-- Hamburger Menu -->
+        <div class="relative inline-block">
+          <button
+            class="text-white bg-indigo-500 px-4 py-2 rounded-md"
+            onclick="toggleMenu()"
+          >
+            Choose Language
+          </button>
+          <div
+            id="menu"
+            class="hidden absolute right-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-lg text-black"
+          >
+            <ul class="py-1">
+              <li>
+                <button
+                  class="block px-4 py-2 hover:bg-gray-100"
+                  onclick="displayCode('C')"
+                >
+                  C
+                </button>
+              </li>
+              <li>
+                <button
+                  class="block px-4 py-2 hover:bg-gray-100"
+                  onclick="displayCode('C++')"
+                >
+                  C++
+                </button>
+              </li>
+              <li>
+                <button
+                  class="block px-4 py-2 hover:bg-gray-100"
+                  onclick="displayCode('Python')"
+                >
+                  Python
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container mx-auto mt-8 px-4">
+      <!-- C Code Section -->
+      <div id="C" class="code-section">
+        <h2 class="text-2xl font-semibold mb-4">C - Linked List Implementation</h2>
+        <p class="mb-4">
+          In C, linked lists are constructed using structures. Each node contains data and a pointer to the next node:
+        </p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg overflow-auto">
+<span class="comment">// Define the structure for a linked list node</span>
+<span class="keyword">struct</span> <span class="type">Node</span> {
+    <span class="keyword">int</span> <span class="variable">data</span>;
+    <span class="keyword">struct</span> <span class="type">Node</span>* <span class="variable">next</span>;
+};
+
+<span class="comment">// Initialize a new node</span>
+<span class="keyword">struct</span> <span class="type">Node</span>* <span class="variable">head</span> = <span class="keyword">NULL</span>;
+<span class="variable">head</span> = (<span class="keyword">struct</span> <span class="type">Node</span>*) <span class="keyword">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> <span class="type">Node</span>));
+<span class="variable">head</span>-><span class="variable">data</span> = <span class="variable">1</span>;
+<span class="variable">head</span>-><span class="variable">next</span> = <span class="keyword">NULL</span>;
+        </pre>
+
+        <h3 class="text-xl font-semibold mt-6 mb-2">Addition of Elements</h3>
+        <p class="mb-4">To add elements, you link new nodes to the existing list:</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg overflow-auto">
+<span class="keyword">struct</span> <span class="type">Node</span>* <span class="variable">newNode</span> = (<span class="keyword">struct</span> <span class="type">Node</span>*) <span class="keyword">malloc</span>(<span class="keyword">sizeof</span>(<span class="keyword">struct</span> <span class="type">Node</span>));
+<span class="variable">newNode</span>-><span class="variable">data</span> = <span class="variable">2</span>;
+<span class="variable">newNode</span>-><span class="variable">next</span> = <span class="keyword">NULL</span>;
+<span class="variable">head</span>-><span class="variable">next</span> = <span class="variable">newNode</span>;
+        </pre>
+
+        <h3 class="text-xl font-semibold mt-6 mb-2">Deletion of Elements</h3>
+        <p class="mb-4">You can delete a node by adjusting the links and freeing memory:</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg overflow-auto">
+<span class="keyword">struct</span> <span class="type">Node</span>* <span class="variable">temp</span> = <span class="variable">head</span>;
+<span class="variable">head</span> = <span class="variable">head</span>-><span class="variable">next</span>;
+<span class="keyword">free</span>(<span class="variable">temp</span>);
+        </pre>
+      </div>
+
+      <!-- C++ Code Section -->
+      <div id="C++" class="code-section hidden">
+        <h2 class="text-2xl font-semibold mb-4">C++ - Linked List Implementation</h2>
+        <p class="mb-4">In C++, the structure of a linked list is similar to C:</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg overflow-auto">
+<span class="keyword">struct</span> <span class="type">Node</span> {
+    <span class="keyword">int</span> <span class="variable">data</span>;
+    <span class="type">Node</span>* <span class="variable">next</span>;
+};
+
+<span class="type">Node</span>* <span class="variable">head</span> = <span class="keyword">nullptr</span>;
+<span class="variable">head</span> = <span class="keyword">new</span> <span class="type">Node</span>();
+<span class="variable">head</span>-><span class="variable">data</span> = <span class="variable">1</span>;
+<span class="variable">head</span>-><span class="variable">next</span> = <span class="keyword">nullptr</span>;
+        </pre>
+
+        <h3 class="text-xl font-semibold mt-6 mb-2">Addition of Elements</h3>
+        <p class="mb-4">To add elements in C++:</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg overflow-auto">
+<span class="type">Node</span>* <span class="variable">newNode</span> = <span class="keyword">new</span> <span class="type">Node</span>();
+<span class="variable">newNode</span>-><span class="variable">data</span> = <span class="variable">2</span>;
+<span class="variable">newNode</span>-><span class="variable">next</span> = <span class="keyword">nullptr</span>;
+<span class="variable">head</span>-><span class="variable">next</span> =
+<!-- C++ Code Section (continued) -->
+<span class="variable">newNode</span>;
+        </pre>
+
+        <h3 class="text-xl font-semibold mt-6 mb-2">Deletion of Elements</h3>
+        <p class="mb-4">To delete a node in C++:</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg overflow-auto">
+<span class="type">Node</span>* <span class="variable">temp</span> = <span class="variable">head</span>;
+<span class="variable">head</span> = <span class="variable">head</span>-><span class="variable">next</span>;
+<span class="keyword">delete</span> <span class="variable">temp</span>;
+        </pre>
+      </div>
+
+      <!-- Python Code Section -->
+      <div id="Python" class="code-section hidden">
+        <h2 class="text-2xl font-semibold mb-4">Python - Linked List Implementation</h2>
+        <p class="mb-4">In Python, linked lists can be implemented using classes. Each node contains data and a reference to the next node:</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg overflow-auto">
+<span class="comment"># Define the class for a linked list node</span>
+<span class="keyword">class</span> <span class="type">Node</span>:
+    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="variable">self</span>, <span class="variable">data</span>):
+        <span class="variable">self.data</span> = <span class="variable">data</span>
+        <span class="variable">self.next</span> = <span class="keyword">None</span>
+
+<span class="comment"># Initialize a new node</span>
+<span class="variable">head</span> = <span class="type">Node</span>(<span class="variable">1</span>)
+
+<span class="comment"># Addition of Elements</span>
+<span class="variable">new_node</span> = <span class="type">Node</span>(<span class="variable">2</span>)
+<span class="variable">head.next</span> = <span class="variable">new_node</span>
+
+<span class="comment"># Deletion of Elements</span>
+<span class="variable">head</span> = <span class="variable">head.next</span>
+        </pre>
+      </div>
+    </div>
+  </body>
+</html>

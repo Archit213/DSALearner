@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Structure: Array</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+    />
+    <style>
+      /* Syntax highlighting for code */
+      .keyword {
+        color: #ff7f50;
+        font-weight: bold;
+      }
+      .variable {
+        color: #00bfff;
+        font-weight: bold;
+      }
+      .function {
+        color: #32cd32;
+        font-weight: bold;
+      }
+      .array {
+        color: #ff4500;
+        font-weight: bold;
+      }
+      .comment {
+        color: #999;
+        font-style: italic;
+      }
+    </style>
+    <script defer>
+      // JavaScript to handle menu selection and dynamic content display
+      function displayCode(language) {
+        const sections = document.querySelectorAll(".code-section");
+        sections.forEach((section) => {
+          section.style.display = "none";
+        });
+        document.getElementById(language).style.display = "block";
+        document.getElementById("heading").innerText = `${language} - Array Data Structure`;
+        toggleMenu(); // Hide the menu after a selection
+      }
+
+      // Ensure the page loads with a default language (C in this case)
+      window.onload = () => {
+        displayCode("C");
+      };
+
+      // Toggle the hamburger menu visibility
+      function toggleMenu() {
+        const menu = document.getElementById("menu");
+        menu.classList.toggle("hidden");
+      }
+    </script>
+  </head>
+  <body class="bg-gray-100 text-gray-800">
+    <!-- Header -->
+    <header class="bg-indigo-600 text-white p-4">
+      <div class="container mx-auto flex justify-between items-center">
+        <h1 id="heading" class="text-xl font-bold">C - Array Data Structure</h1>
+        <!-- Hamburger Menu -->
+        <div class="relative inline-block">
+          <button
+            class="text-white bg-indigo-500 px-4 py-2 rounded-md"
+            onclick="toggleMenu()"
+          >
+            Choose Language
+          </button>
+          <div
+            id="menu"
+            class="hidden absolute right-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-lg text-black"
+          >
+            <ul class="py-1">
+              <li>
+                <button
+                  class="block px-4 py-2 hover:bg-gray-100"
+                  onclick="displayCode('C')"
+                >
+                  C
+                </button>
+              </li>
+              <li>
+                <button
+                  class="block px-4 py-2 hover:bg-gray-100"
+                  onclick="displayCode('C++')"
+                >
+                  C++
+                </button>
+              </li>
+              <li>
+                <button
+                  class="block px-4 py-2 hover:bg-gray-100"
+                  onclick="displayCode('Python')"
+                >
+                  Python
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container mx-auto mt-8 px-4">
+      <!-- C Code Section -->
+      <div id="C" class="code-section">
+        <h2 class="text-2xl font-semibold mb-4">C - Array Initialization</h2>
+        <p class="mb-4">
+          In C, arrays are used to store multiple values of the same data type in
+          contiguous memory locations. Below is an example of initializing an array
+          in C:
+        </p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg overflow-auto">
+<span class="comment">// Declaring and initializing an array of 5 integers</span>
+<span class="keyword">int</span> <span class="array">arr</span>[<span class="variable">5</span>]; <span class="comment">// Declares an array of 5 integers</span>
+<span class="array">arr</span>[<span class="variable">0</span>] = <span class="variable">1</span>; <span class="comment">// Assigns value 1 to the first element</span>
+<span class="array">arr</span>[<span class="variable">1</span>] = <span class="variable">2</span>; <span class="comment">// Assigns value 2 to the second element</span>
+        </pre>
+
+        <h3 class="text-xl font-semibold mt-6 mb-2">Addition of Elements</h3>
+        <p class="mb-4">You can loop through the array to assign values or modify them:</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg overflow-auto">
+<span class="keyword">for</span> (<span class="keyword">int</span> <span class="variable">i</span> = 0; <span class="variable">i</span> &lt; <span class="variable">5</span>; <span class="variable">i</span>++) {
+    <span class="array">arr</span>[<span class="variable">i</span>] = <span class="variable">i</span> + 1; <span class="comment">// Assigns values from 1 to 5</span>
+}
+        </pre>
+
+        <h3 class="text-xl font-semibold mt-6 mb-2">Deletion of Elements</h3>
+        <p class="mb-4">In C, you can "delete" an element by setting its value to 0 or another placeholder:</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg overflow-auto">
+<span class="array">arr</span>[<span class="variable">2</span>] = <span class="variable">0</span>; <span class="comment">// Deletes the third element (sets it to 0)</span>
+        </pre>
+      </div>
+
+      <!-- C++ Code Section -->
+      <div id="C++" class="code-section hidden">
+        <h2 class="text-2xl font-semibold mb-4">C++ - Array Initialization</h2>
+        <p class="mb-4">
+          In C++, arrays work similarly to C. Here's how you can declare and
+          initialize an array:
+        </p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg overflow-auto">
+<span class="comment">// Declaring and initializing an array of 5 integers in C++</span>
+<span class="keyword">int</span> <span class="array">arr</span>[<span class="variable">5</span>];
+<span class="array">arr</span>[<span class="variable">0</span>] = <span class="variable">1</span>;
+<span class="array">arr</span>[<span class="variable">1</span>] = <span class="variable">2</span>;
+        </pre>
+
+        <h3 class="text-xl font-semibold mt-6 mb-2">Addition of Elements</h3>
+        <p class="mb-4">In C++, you can use loops similarly to C:</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg overflow-auto">
+<span class="keyword">for</span> (<span class="keyword">int</span> <span class="variable">i</span> = 0; <span class="variable">i</span> &lt; <span class="variable">5</span>; <span class="variable">i</span>++) {
+    <span class="array">arr</span>[<span class="variable">i</span>] = <span class="variable">i</span> + 1;
+}
+        </pre>
+
+        <h3 class="text-xl font-semibold mt-6 mb-2">Deletion of Elements</h3>
+        <p class="mb-4">You can "delete" or reset elements similarly:</p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg overflow-auto">
+<span class="array">arr</span>[<span class="variable">2</span>] = <span class="variable">0</span>;
+        </pre>
+      </div>
+
+      <!-- Python Code Section -->
+      <div id="Python" class="code-section hidden">
+        <h2 class="text-2xl font-semibold mb-4">Python - Array Initialization</h2>
+        <p class="mb-4">
+          In Python, arrays (or lists) are dynamically typed and easy to manipulate:
+        </p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg overflow-auto">
+<span class="comment"># Declaring and initializing an array (list) in Python</span>
+<span class="array">arr</span> = [<span class="variable">1</span>, <span class="variable">2</span>, <span class="variable">3</span>, <span class="variable">4</span>, <span class="variable">5</span>]
+        </pre>
+
+        <h3 class="text-xl font-semibold mt-6 mb-2">Addition of Elements</h3>
+        <p class="mb-4">
+          You can append new elements to a Python list using <code>append()</code>:
+        </p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg overflow-auto">
+<span class="array">arr</span>.<span class="function">append</span>(<span class="variable">6</span>);
+        </pre>
+
+        <h3 class="text-xl font-semibold mt-6 mb-2">Deletion of Elements</h3>
+        <p class="mb-4">
+          To delete an element from a Python list, you can use the <code>remove()</code> method or the <code>del</code> statement:
+        </p>
+        <pre class="bg-gray-800 text-white p-4 rounded-lg overflow-auto">
+<span class="comment"># Deleting an element with value 3</span>
+<span class="array">arr</span>.<span class="function">remove</span>(<span class="variable">3</span>);
+
+<span class="comment"># Deleting an element at index 2</span>
+<span class="keyword">del</span> <span class="array">arr</span>[<span class="variable">2</span>];
+        </pre>
+      </div>
+    </div>
+  </body>
+</html>

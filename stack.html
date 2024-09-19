@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Structure: Stack</title>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+  />
+  <style>
+    /* Syntax highlighting for code */
+    .keyword {
+      color: #ff7f50;
+      font-weight: bold;
+    }
+    .variable {
+      color: #00bfff;
+      font-weight: bold;
+    }
+    .function {
+      color: #32cd32;
+      font-weight: bold;
+    }
+    .array {
+      color: #ff4500;
+      font-weight: bold;
+    }
+    .comment {
+      color: #999;
+      font-style: italic;
+    }
+  </style>
+  <script defer>
+    // JavaScript to handle menu selection and dynamic content display
+    function displayCode(language) {
+      const sections = document.querySelectorAll(".code-section");
+      sections.forEach((section) => {
+        section.style.display = "none";
+      });
+      document.getElementById(language).style.display = "block";
+      document.getElementById("heading").innerText = `${language} - Stack Data Structure`;
+      toggleMenu(); // Hide the menu after a selection
+    }
+
+    // Ensure the page loads with a default language (C in this case)
+    window.onload = () => {
+      displayCode("C");
+    };
+
+    // Toggle the hamburger menu visibility
+    function toggleMenu() {
+      const menu = document.getElementById("menu");
+      menu.classList.toggle("hidden");
+    }
+  </script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <!-- Header -->
+  <header class="bg-indigo-600 text-white p-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 id="heading" class="text-xl font-bold">C - Stack Data Structure</h1>
+      <!-- Hamburger Menu -->
+      <div class="relative inline-block">
+        <button
+          class="text-white bg-indigo-500 px-4 py-2 rounded-md"
+          onclick="toggleMenu()"
+        >
+          Choose Language
+        </button>
+        <div
+          id="menu"
+          class="hidden absolute right-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-lg text-black"
+        >
+          <ul class="py-1">
+            <li>
+              <button
+                class="block px-4 py-2 hover:bg-gray-100"
+                onclick="displayCode('C')"
+              >
+                C
+              </button>
+            </li>
+            <li>
+              <button
+                class="block px-4 py-2 hover:bg-gray-100"
+                onclick="displayCode('C++')"
+              >
+                C++
+              </button>
+            </li>
+            <li>
+              <button
+                class="block px-4 py-2 hover:bg-gray-100"
+                onclick="displayCode('Python')"
+              >
+                Python
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container mx-auto mt-8 px-4">
+    <!-- C Code Section -->
+    <div id="C" class="code-section">
+      <h2 class="text-2xl font-semibold mb-4">C - Stack Operations</h2>
+      <p class="mb-4">
+        In C, stacks can be implemented using arrays. Below is an example of basic stack operations:
+      </p>
+      <pre class="bg-gray-800 text-white p-4 rounded-lg overflow-auto">
+<span class="comment">// C program to implement stack operations</span>
+<span class="keyword">#define</span> <span class="variable">MAX</span> <span class="variable">100</span> <span class="comment">// Maximum size of stack</span>
+
+<span class="keyword">int</span> <span class="array">stack</span>[<span class="variable">MAX</span>];
+<span class="keyword">int</span> <span class="variable">top</span> = <span class="variable">-1</span>; <span class="comment">// Initialize top of stack</span>
+
+<span class="keyword">void</span> <span class="function">push</span>(<span class="keyword">int</span> <span class="variable">item</span>) {
+  <span class="keyword">if</span> (<span class="variable">top</span> == <span class="variable">MAX</span> - <span class="variable">1</span>) {
+    <span class="comment">// Stack overflow</span>
+    <span class="keyword">return</span>;
+  }
+  <span class="array">stack</span>[++<span class="variable">top</span>] = <span class="variable">item</span>;
+}
+
+<span class="keyword">int</span> <span class="function">pop</span>() {
+  <span class="keyword">if</span> (<span class="variable">top</span> == <span class="variable">-1</span>) {
+    <span class="comment">// Stack underflow</span>
+    <span class="keyword">return</span> <span class="variable">-1</span>;
+  }
+  <span class="keyword">return</span> <span class="array">stack</span>[<span class="variable">top</span>--];
+}
+      </pre>
+    </div>
+
+    <!-- C++ Code Section -->
+    <div id="C++" class="code-section hidden">
+      <h2 class="text-2xl font-semibold mb-4">C++ - Stack Operations</h2>
+      <p class="mb-4">
+        In C++, stacks can be implemented using the Standard Template Library (STL). Here's an example:
+      </p>
+      <pre class="bg-gray-800 text-white p-4 rounded-lg overflow-auto">
+<span class="comment">// C++ program to demonstrate stack operations</span>
+<span class="keyword">#include</span> <span class="variable">&lt;stack&gt;</span>
+<span class="keyword">using</span> <span class="variable">namespace</span> <span class="variable">std</span>;
+
+<span class="keyword">int</span> <span class="function">main</span>() {
+  <span class="keyword">stack</span>&lt;<span class="keyword">int</span>&gt; <span class="variable">s</span>;
+
+  <span class="function">s.push</span>(<span class="variable">10</span>);
+  <span class="function">s.push</span>(<span class="variable">20</span>);
+  <span class="function">s.push</span>(<span class="variable">30</span>);
+
+  <span class="comment">// Popping elements</span>
+  <span class="keyword">while</span> (<span class="function">!s.empty</span>()) {
+    <span class="keyword">cout</span> &lt;&lt; <span class="function">s.top</span>() &lt;&lt; <span class="keyword">endl</span>;
+    <span class="function">s.pop</span>();
+  }
+  <span class="keyword">return</span> <span class="variable">0</span>;
+}
+      </pre>
+    </div>
+
+    <!-- Python Code Section -->
+    <div id="Python" class="code-section hidden">
+      <h2 class="text-2xl font-semibold mb-4">Python - Stack Operations</h2>
+      <p class="mb-4">
+        In Python, stacks can be implemented using lists. Below is an example:
+      </p>
+      <pre class="bg-gray-800 text-white p-4 rounded-lg overflow-auto">
+<span class="comment"># Python program to demonstrate stack operations</span>
+<span class="keyword">stack</span> = []
+
+<span class="keyword">def</span> <span class="function">push</span>(<span class="variable">item</span>):
+    <span class="variable">stack</span>.append(<span class="variable">item</span>)
+
+<span class="keyword">def</span> <span class="function">pop</span>():
+    <span class="keyword">if</span> <span class="variable">stack</span>:
+        <span class="keyword">return</span> <span class="variable">stack</span>.pop()
+    <span class="keyword">return</span> <span class="variable">None</span>
+
+<span class="comment"># Example usage</span>
+<span class="function">push</span>(<span class="variable">10</span>)
+<span class="function">push</span>(<span class="variable">20</span>)
+<span class="function">push</span>(<span class="variable">30</span>)
+
+<span class="keyword">while</span> <span class="variable">stack</span>:
+    <span class="keyword">print</span>(<span class="function">pop</span>())
+      </pre>
+    </div>
+  </div>
+</body>
+</html>
