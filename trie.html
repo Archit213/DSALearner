@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Structure: Trie</title>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+  />
+  <style>
+    /* Syntax highlighting for code */
+    .keyword {
+      color: #ff7f50;
+      font-weight: bold;
+    }
+    .variable {
+      color: #00bfff;
+      font-weight: bold;
+    }
+    .function {
+      color: #32cd32;
+      font-weight: bold;
+    }
+    .array {
+      color: #ff4500;
+      font-weight: bold;
+    }
+    .comment {
+      color: #999;
+      font-style: italic;
+    }
+  </style>
+  <script defer>
+    // JavaScript to handle menu selection and dynamic content display
+    function displayCode(language) {
+      const sections = document.querySelectorAll(".code-section");
+      sections.forEach((section) => {
+        section.style.display = "none";
+      });
+      document.getElementById(language).style.display = "block";
+      document.getElementById("heading").innerText = `${language} - Trie Data Structure`;
+      toggleMenu(); // Hide the menu after a selection
+    }
+
+    // Ensure the page loads with a default language (C in this case)
+    window.onload = () => {
+      displayCode("C");
+    };
+
+    // Toggle the hamburger menu visibility
+    function toggleMenu() {
+      const menu = document.getElementById("menu");
+      menu.classList.toggle("hidden");
+    }
+  </script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <!-- Header -->
+  <header class="bg-indigo-600 text-white p-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 id="heading" class="text-xl font-bold">C - Trie Data Structure</h1>
+      <!-- Hamburger Menu -->
+      <div class="relative inline-block">
+        <button
+          class="text-white bg-indigo-500 px-4 py-2 rounded-md"
+          onclick="toggleMenu()"
+        >
+          Choose Language
+        </button>
+        <div
+          id="menu"
+          class="hidden absolute right-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-lg text-black"
+        >
+          <ul class="py-1">
+            <li>
+              <button
+                class="block px-4 py-2 hover:bg-gray-100"
+                onclick="displayCode('C')"
+              >
+                C
+              </button>
+            </li>
+            <li>
+              <button
+                class="block px-4 py-2 hover:bg-gray-100"
+                onclick="displayCode('C++')"
+              >
+                C++
+              </button>
+            </li>
+            <li>
+              <button
+                class="block px-4 py-2 hover:bg-gray-100"
+                onclick="displayCode('Python')"
+              >
+                Python
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container mx-auto mt-8 px-4">
+    <!-- C Code Section -->
+    <div id="C" class="code-section">
+      <h2 class="text-2xl font-semibold mb-4">C - Trie Implementation</h2>
+      <p class="mb-4">
+        In C, a Trie (prefix tree) can be implemented using a tree structure. Below is an example:
+      </p>
+      <pre class="bg-gray-800 text-white p-4 rounded-lg overflow-auto">
+<span class="comment">/* C code for Trie implementation */</span>
+<span class="keyword">#include</span> <span class="variable">&lt;stdio.h&gt;</span>
+<span class="keyword">#include</span> <span class="variable">&lt;stdlib.h&gt;</span>
+
+<span class="keyword">#define</span> <span class="variable">ALPHABET_SIZE</span> <span class="variable">26</span>
+
+<span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="variable">TrieNode</span> {
+    <span class="keyword">struct</span> <span class="variable">TrieNode</span> *<span class="variable">children</span>[<span class="variable">ALPHABET_SIZE</span>];
+    <span class="keyword">int</span> <span class="variable">isEndOfWord</span>;
+} <span class="variable">TrieNode</span>;
+
+<span class="keyword">struct</span> <span class="variable">TrieNode</span> *<span class="function">createNode</span>() {
+    <span class="keyword">struct</span> <span class="variable">TrieNode</span> *<span class="variable">node</span> = <span class="keyword">malloc</span>(<span class="keyword">sizeof</span>(<span class="variable">TrieNode</span>));
+    <span class="keyword">if</span> (<span class="variable">node</span> == <span class="keyword">NULL</span>) {
+        <span class="keyword">exit</span>(<span class="variable">1</span>);
+    }
+    <span class="keyword">for</span> (<span class="keyword">int</span> <span class="variable">i</span> = <span class="variable">0</span>; <span class="variable">i</span> &lt; <span class="variable">ALPHABET_SIZE</span>; <span class="variable">i</span>++) {
+        <span class="variable">node</span>-&gt;<span class="variable">children</span>[<span class="variable">i</span>] = <span class="keyword">NULL</span>;
+    }
+    <span class="variable">node</span>-&gt;<span class="variable">isEndOfWord</span> = <span class="keyword">0</span>;
+    <span class="keyword">return</span> <span class="variable">node</span>;
+}
+
+<span class="keyword">void</span> <span class="function">insert</span>(<span class="keyword">struct</span> <span class="variable">TrieNode</span> *<span class="variable">root</span>, <span class="keyword">const</span> <span class="keyword">char</span> *<span class="variable">key</span>) {
+    <span class="keyword">struct</span> <span class="variable">TrieNode</span> *<span class="variable">pCrawl</span> = <span class="variable">root</span>;
+    <span class="keyword">int</span> <span class="variable">index</span>;
+
+    <span class="keyword">while</span> (*<span class="variable">key</span>) {
+        <span class="variable">index</span> = *<span class="variable">key</span> - <span class="variable">'a'</span>;
+        <span class="keyword">if</span> (<span class="variable">pCrawl</span>-&gt;<span class="variable">children</span>[<span class="variable">index</span>] == <span class="keyword">NULL</span>) {
+            <span class="variable">pCrawl</span>-&gt;<span class="variable">children</span>[<span class="variable">index</span>] = <span class="function">createNode</span>();
+        }
+        <span class="variable">pCrawl</span> = <span class="variable">pCrawl</span>-&gt;<span class="variable">children</span>[<span class="variable">index</span>];
+        <span class="variable">key</span>++;
+    }
+    <span class="variable">pCrawl</span>-&gt;<span class="variable">isEndOfWord</span> = <span class="keyword">1</span>;
+}
+
+<span class="keyword">int</span> <span class="function">search</span>(<span class="keyword">struct</span> <span class="variable">TrieNode</span> *<span class="variable">root</span>, <span class="keyword">const</span> <span class="keyword">char</span> *<span class="variable">key</span>) {
+    <span class="keyword">struct</span> <span class="variable">TrieNode</span> *<span class="variable">pCrawl</span> = <span class="variable">root</span>;
+    <span class="keyword">int</span> <span class="variable">index</span>;
+
+    <span class="keyword">while</span> (*<span class="variable">key</span>) {
+        <span class="variable">index</span> = *<span class="variable">key</span> - <span class="variable">'a'</span>;
+        <span class="keyword">if</span> (<span class="variable">pCrawl</span>-&gt;<span class="variable">children</span>[<span class="variable">index</span>] == <span class="keyword">NULL</span>) {
+            <span class="keyword">return</span> <span class="keyword">0</span>;
+        }
+        <span class="variable">pCrawl</span> = <span class="variable">pCrawl</span>-&gt;<span class="variable">children</span>[<span class="variable">index</span>];
+        <span class="variable">key</span>++;
+    }
+    <span class="keyword">return</span> (<span class="variable">pCrawl</span>-&gt;<span class="variable">isEndOfWord</span>);
+}
+      </pre>
+    </div>
+
+    <!-- C++ Code Section -->
+    <div id="C++" class="code-section hidden">
+      <h2 class="text-2xl font-semibold mb-4">C++ - Trie Implementation</h2>
+      <p class="mb-4">
+        In C++, the Trie can be implemented using a similar approach but with C++ features:
+      </p>
+      <pre class="bg-gray-800 text-white p-4 rounded-lg overflow-auto">
+<span class="comment">/* C++ code for Trie implementation */</span>
+<span class="keyword">#include</span> <span class="variable">&lt;iostream&gt;</span>
+<span class="keyword">#include</span> <span class="variable">&lt;unordered_map&gt;</span>
+<span class="keyword">#include</span> <span class="variable">&lt;string&gt;</span>
+
+<span class="keyword">using</span> <span class="keyword">namespace</span> <span class="variable">std</span>;
+
+<span class="keyword">class</span> <span class="variable">TrieNode</span> {
+public:
+    <span class="keyword">unordered_map</span>&lt;<span class="keyword">char</span>, <span class="keyword">TrieNode</span>*&gt; <span class="variable">children</span>;
+    <span class="keyword">bool</span> <span class="variable">isEndOfWord</span>;
+
+    <span class="variable">TrieNode</span>() : <span class="variable">isEndOfWord</span>(<span class="keyword">false</span>) {}
+};
+
+<span class="keyword">class</span> <span class="variable">Trie</span> {
+    <span class="keyword">TrieNode</span> *<span class="variable">root</span>;
+
+public:
+    <span class="variable">Trie</span>() {
+        <span class="variable">root</span> = <span class="keyword">new</span> <span class="variable">TrieNode</span>();
+    }
+
+    <span class="keyword">void</span> <span class="function">insert</span>(<span class="keyword">const</span> <span class="keyword">string</span> &<span class="variable">key</span>) {
+        <span class="keyword">TrieNode</span> *<span class="variable">pCrawl</span> = <span class="variable">root</span>;
+
+        <span class="keyword">for</span> (<span class="keyword">char</span> <span class="variable">ch</span> : <span class="variable">key</span>) {
+            <span class="keyword">if</span> (<span class="variable">pCrawl</span>-&gt;<span class="variable">children</span>.<span class="function">find</span>(<span class="variable">ch</span>) == <span class="keyword">end</span>()) {
+                <span class="variable">pCrawl</span>-&gt;<span class="variable">children</span>[<span class="variable">ch</span>] = <span class="keyword">new</span> <span class="variable">TrieNode</span>();
+            }
+            <span class="variable">pCrawl</span> = <span class="variable">pCrawl</span>-&gt;<span class="variable">children</span>[<span class="variable">ch</span>];
+        }
+        <span class="variable">pCrawl</span>-&gt;<span class="variable">isEndOfWord</span> = <span class="keyword">true</span>;
+    }
+
+    <span class="keyword">bool</span> <span class="function">search</span>(<span class="keyword">const</span> <span class="keyword">string</span> &<span class="variable">key</span>) {
+        <span class="keyword">TrieNode</span> *<span class="variable">pCrawl</span> = <span class="variable">root</span>;
+
+        <span class="keyword">for</span> (<span class="keyword">char</span> <span class="variable">ch</span> : <span class="variable">key</span>) {
+            <span class="keyword">if</span> (<span class="variable">pCrawl</span>-&gt;<span class="variable">children</span>.<span class="function">find</span>(<span class="variable">ch</span>) == <span class="keyword">end</span>()) {
+                <span class="keyword">return</span> <span class="keyword">false</span>;
+            }
+            <span class="variable">pCrawl</span> = <span class="variable">pCrawl</span>-&gt;<span class="variable">children</span>[<span class="variable">ch</span>];
+        }
+        <span class="keyword">return</span> <span class="variable">pCrawl</span>-&gt;<span class="variable">isEndOfWord</span>;
+    }
+};
+      </pre>
+    </div>
+
+    <!-- Python Code Section -->
+    <div id="Python" class="code-section hidden">
+      <h2 class="text-2xl font-semibold mb-4">Python - Trie Implementation</h2>
+      <p class="mb-4">
+        The Python implementation of a Trie is more concise and makes use of Python's dictionaries:
+      </p>
+      <pre class="bg-gray-800 text-white p-4 rounded-lg overflow-auto">
+<span class="comment"># Python code for Trie implementation</span>
+
+<span class="keyword">class</span> <span class="variable">TrieNode</span>:
+    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="variable">self</span>):
+        <span class="variable">self</span>.<span class="variable">children</span> = {}
+        <span class="variable">self</span>.<span class="variable">isEndOfWord</span> = <span class="keyword">False</span>
+
+<span class="keyword">class</span> <span class="variable">Trie</span>:
+    <span class="keyword">def</span> <span class="function">__init__</span>(<span class="variable">self</span>):
+        <span class="variable">self</span>.<span class="variable">root</span> = <span class="variable">TrieNode</span>()
+
+    <span class="keyword">def</span> <span class="function">insert</span>(<span class="variable">self</span>, <span class="keyword">word</span>):
+        <span class="variable">node</span> = <span class="variable">self</span>.<span class="variable">root</span>
+        <span class="keyword">for</span> <span class="variable">char</span> <span class="keyword">in</span> <span class="variable">word</span>:
+            <span class="keyword">if</span> <span class="variable">char</span> <span class="keyword">not</span> <span class="keyword">in</span> <span class="variable">node</span>.<span class="variable">children</span>:
+                <span class="variable">node</span>.<span class="variable">children</span>[<span class="variable">char</span>] = <span class="variable">TrieNode</span>()
+            <span class="variable">node</span> = <span class="variable">node</span>.<span class="variable">children</span>[<span class="variable">char</span>]
+        <span class="variable">node</span>.<span class="variable">isEndOfWord</span> = <span class="keyword">True</span>
+
+    <span class="keyword">def</span> <span class="function">search</span>(<span class="variable">self</span>, <span class="keyword">word</span>):
+        <span class="variable">node</span> = <span class="variable">self</span>.<span class="variable">root</span>
+        <span class="keyword">for</span> <span class="variable">char</span> <span class="keyword">in</span> <span class="variable">word</span>:
+            <span class="keyword">if</span> <span class="variable">char</span> <span class="keyword">not</span> <span class="keyword">in</span> <span class="variable">node</span>.<span class="variable">children</span>:
+                <span class="keyword">return</span> <span class="keyword">False</span>
+            <span class="variable">node</span> = <span class="variable">node</span>.<span class="variable">children</span>[<span class="variable">char</span>]
+        <span class="keyword">return</span> <span class="variable">node</span>.<span class="variable">isEndOfWord</span>
+      </pre>
+    </div>
+  </div>
+
+  <!-- Script to handle the menu functionality -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const menuItems = document.querySelectorAll('.menu-item');
+      const codeSections = document.querySelectorAll('.code-section');
+
+      menuItems.forEach(item => {
+        item.addEventListener('click', function() {
+          const targetId = this.dataset.target;
+
+          // Hide all code sections
+          codeSections.forEach(section => {
+            section.classList.add('hidden');
+          });
+
+          // Show the selected code section
+          document.getElementById(targetId).classList.remove('hidden');
+
+          // Update menu item styles
+          menuItems.forEach(i => {
+            i.classList.remove('text-blue-500', 'border-b-2', 'border-blue-500');
+          });
+          this.classList.add('text-blue-500', 'border-b-2', 'border-blue-500');
+        });
+      });
+
+      // Show the default section
+      const defaultSection = document.querySelector('.menu-item[data-target="C"]');
+      if (defaultSection) {
+        defaultSection.click();
+      }
+    });
+  </script>
+</body>
+</html>

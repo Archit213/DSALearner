@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Structure: Binary Tree</title>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+  />
+  <style>
+    /* Syntax highlighting for code */
+    .keyword {
+      color: #ff7f50;
+      font-weight: bold;
+    }
+    .variable {
+      color: #00bfff;
+      font-weight: bold;
+    }
+    .function {
+      color: #32cd32;
+      font-weight: bold;
+    }
+    .array {
+      color: #ff4500;
+      font-weight: bold;
+    }
+    .comment {
+      color: #999;
+      font-style: italic;
+    }
+  </style>
+  <script defer>
+    // JavaScript to handle menu selection and dynamic content display
+    function displayCode(language) {
+      const sections = document.querySelectorAll(".code-section");
+      sections.forEach((section) => {
+        section.style.display = "none";
+      });
+      document.getElementById(language).style.display = "block";
+      document.getElementById("heading").innerText = `${language} - Binary Tree Data Structure`;
+      toggleMenu(); // Hide the menu after a selection
+    }
+
+    // Ensure the page loads with a default language (C in this case)
+    window.onload = () => {
+      displayCode("C");
+    };
+
+    // Toggle the hamburger menu visibility
+    function toggleMenu() {
+      const menu = document.getElementById("menu");
+      menu.classList.toggle("hidden");
+    }
+  </script>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <!-- Header -->
+  <header class="bg-indigo-600 text-white p-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <h1 id="heading" class="text-xl font-bold">C - Binary Tree Data Structure</h1>
+      <!-- Hamburger Menu -->
+      <div class="relative inline-block">
+        <button
+          class="text-white bg-indigo-500 px-4 py-2 rounded-md"
+          onclick="toggleMenu()"
+        >
+          Choose Language
+        </button>
+        <div
+          id="menu"
+          class="hidden absolute right-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-lg text-black"
+        >
+          <ul class="py-1">
+            <li>
+              <button
+                class="block px-4 py-2 hover:bg-gray-100"
+                onclick="displayCode('C')"
+              >
+                C
+              </button>
+            </li>
+            <li>
+              <button
+                class="block px-4 py-2 hover:bg-gray-100"
+                onclick="displayCode('C++')"
+              >
+                C++
+              </button>
+            </li>
+            <li>
+              <button
+                class="block px-4 py-2 hover:bg-gray-100"
+                onclick="displayCode('Python')"
+              >
+                Python
+              </button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container mx-auto mt-8 px-4">
+    <!-- C Code Section -->
+    <div id="C" class="code-section">
+      <h2 class="text-2xl font-semibold mb-4">C - Binary Tree Implementation</h2>
+      <p class="mb-4">
+        A binary tree is a data structure where each node has at most two children. Below is a simple implementation in C:
+      </p>
+      <pre class="bg-gray-800 text-white p-4 rounded-lg overflow-auto">
+<span class="comment">// C program to demonstrate a simple binary tree implementation</span>
+<span class="keyword">#include</span> <span class="variable">&lt;stdio.h&gt;</span>
+<span class="keyword">#include</span> <span class="variable">&lt;stdlib.h&gt;</span>
+
+<span class="keyword">typedef</span> <span class="keyword">struct</span> <span class="variable">Node</span> {
+  <span class="keyword">int</span> <span class="variable">data</span>;
+  <span class="keyword">struct</span> <span class="variable">Node</span>* <span class="variable">left</span>;
+  <span class="keyword">struct</span> <span class="variable">Node</span>* <span class="variable">right</span>;
+} <span class="variable">Node</span>;
+
+<span class="keyword">Node</span>* <span class="function">createNode</span>(<span class="keyword">int</span> <span class="variable">data</span>) {
+  <span class="variable">Node</span>* <span class="variable">new_node</span> = <span class="keyword">malloc</span>(<span class="keyword">sizeof</span>(<span class="variable">Node</span>));
+  <span class="variable">new_node</span>-&gt;<span class="variable">data</span> = <span class="variable">data</span>;
+  <span class="variable">new_node</span>-&gt;<span class="variable">left</span> = <span class="variable">NULL</span>;
+  <span class="variable">new_node</span>-&gt;<span class="variable">right</span> = <span class="variable">NULL</span>;
+  <span class="keyword">return</span> <span class="variable">new_node</span>;
+}
+
+<span class="keyword">void</span> <span class="function">inOrderTraversal</span>(<span class="keyword">Node</span>* <span class="variable">root</span>) {
+  <span class="keyword">if</span> (<span class="variable">root</span> != <span class="variable">NULL</span>) {
+    <span class="function">inOrderTraversal</span>(<span class="variable">root</span>-&gt;<span class="variable">left</span>);
+    <span class="keyword">printf</span>(<span class="string">"%d "</span>, <span class="variable">root</span>-&gt;<span class="variable">data</span>);
+    <span class="function">inOrderTraversal</span>(<span class="variable">root</span>-&gt;<span class="variable">right</span>);
+  }
+}
+
+<span class="keyword">int</span> <span class="variable">main</span>() {
+  <span class="variable">Node</span>* <span class="variable">root</span> = <span class="function">createNode</span>(<span class="variable">1</span>);
+  <span class="variable">root</span>-&gt;<span class="variable">left</span> = <span class="function">createNode</span>(<span class="variable">2</span>);
+  <span class="variable">root</span>-&gt;<span class="variable">right</span> = <span class="function">createNode</span>(<span class="variable">3</span>);
+
+  <span class="function">inOrderTraversal</span>(<span class="variable">root</span>);
+  <span class="keyword">return</span> <span class="variable">0</span>;
+}
+      </pre>
+    </div>
+
+    <!-- C++ Code Section -->
+    <div id="C++" class="code-section hidden">
+      <h2 class="text-2xl font-semibold mb-4">C++ - Binary Tree Implementation</h2>
+      <p class="mb-4">
+        In C++, binary trees can be implemented using classes. Here’s a basic example:
+      </p>
+      <pre class="bg-gray-800 text-white p-4 rounded-lg overflow-auto">
+<span class="comment">// C++ program to demonstrate a simple binary tree implementation</span>
+<span class="keyword">#include</span> <span class="variable">&lt;iostream&gt;</span>
+
+<span class="keyword">class</span> <span class="variable">Node</span> {
+public:
+  <span class="keyword">int</span> <span class="variable">data</span>;
+  <span class="keyword">Node</span>* <span class="variable">left</span>;
+  <span class="keyword">Node</span>* <span class="variable">right</span>;
+
+  <span class="keyword">Node</span>(<span class="keyword">int</span> <span class="variable">val</span>) : <span class="variable">data</span>(<span class="variable">val</span>), <span class="variable">left</span>(<span class="variable">NULL</span>), <span class="variable">right</span>(<span class="variable">NULL</span>) {}
+};
+
+<span class="keyword">void</span> <span class="function">inOrderTraversal</span>(<span class="keyword">Node</span>* <span class="variable">root</span>) {
+  <span class="keyword">if</span> (<span class="variable">root</span> != <span class="variable">NULL</span>) {
+    <span class="function">inOrderTraversal</span>(<span class="variable">root</span>-&gt;<span class="variable">left</span>);
+    <span class="keyword">std::cout</span> &lt;&lt; <span class="variable">root</span>-&gt;<span class="variable">data</span> &lt;&lt; <span class="string">" "</span>;
+    <span class="function">inOrderTraversal</span>(<span class="variable">root</span>-&gt;<span class="variable">right</span>);
+  }
+}
+
+<span class="keyword">int</span> <span class="variable">main</span>() {
+  <span class="variable">Node</span>* <span class="variable">root</span> = <span class="keyword">new</span> <span class="variable">Node</span>(<span class="variable">1</span>);
+  <span class="variable">root</span>-&gt;<span class="variable">left</span> = <span class="keyword">new</span> <span class="variable">Node</span>(<span class="variable">2</span>);
+  <span class="variable">root</span>-&gt;<span class="variable">right</span> = <span class="keyword">new</span> <span class="variable">Node</span>(<span class="variable">3</span>);
+
+  <span class="function">inOrderTraversal</span>(<span class="variable">root</span>);
+  <span class="keyword">return</span> <span class="variable">0</span>;
+}
+      </pre>
+    </div>
+
+    <!-- Python Code Section -->
+    <div id="Python" class="code-section hidden">
+      <h2 class="text-2xl font-semibold mb-4">Python - Binary Tree Implementation</h2>
+      <p class="mb-4">
+        In Python, you can implement a binary tree using classes. Here’s a simple example:
+      </p>
+      <pre class="bg-gray-800 text-white p-4 rounded-lg overflow-auto">
+<span class="comment"># Python program to demonstrate a simple binary tree implementation</span>
+
+<span class="keyword">class</span> <span class="variable">Node</span>:
+  <span class="keyword">def</span> <span class="function">__init__</span>(<span class="variable">self</span>, <span class="variable">data</span>):
+    <span class="variable">self</span>.<span class="variable">data</span> = <span class="variable">data</span>
+    <span class="variable">self</span>.<span class="variable">left</span> = <span class="variable">None</span>
+    <span class="variable">self</span>.<span class="variable">right</span> = <span class="variable">None</span>
+
+<span class="keyword">def</span> <span class="function">inOrderTraversal</span>(<span class="variable">self</span>):
+  <span class="keyword">if</span> <span class="variable">self</span>.<span class="variable">left</span>:
+    <span class="variable">self</span>.<span class="variable">left</span>.<span class="function">inOrderTraversal</span>()
+  <span class="keyword">print</span>(<span class="variable">self</span>.<span class="variable">data</span>, end=<span class="string">" "</span>)
+  <span class="keyword">if</span> <span class="variable">self</span>.<span class="variable">right</span>:
+    <span class="variable">self</span>.<span class="variable">right</span>.<span class="function">inOrderTraversal</span>()
+
+<span class="keyword">if</span> <span class="variable">__name__</span> <span class="keyword">==</span> <span class="string">"__main__"</span>:
+  <span class="variable">root</span> = <span class="keyword">Node</span>(<span class="variable">1</span>)
+  <span class="variable">root</span>.<span class="variable">left</span> = <span class="keyword">Node</span>(<span class="variable">2</span>)
+  <span class="variable">root</span>.<span class="variable">right</span> = <span class="keyword">Node</span>(<span class="variable">3</span>)
+
+  <span class="variable">root</span>.<span class="function">inOrderTraversal</span>()
+      </pre>
+    </div>
+  </div>
+</body>
+</html>
