@@ -39,14 +39,15 @@
         <a href="#" class="mr-5 hover:text-yellow-300 font-semibold">About Us</a>
         <a href="#" class="mr-5 hover:text-yellow-300 font-semibold">Contact Us</a>
       </nav>
-       <div class="relative">
-        <input id="searchInput" type="text" placeholder="Data Structures" class="w-48 p-2 rounded-lg focus:ring-2 focus:ring-yellow-300 focus:outline-none text-gray-900">
+      <div class="relative">
+        <input id="searchInput" type="text" placeholder="Data Structures" class="w-48 p-2 rounded-lg focus:ring-2 focus:ring-yellow-300 focus:outline-none text-gray-900"
+          onkeydown="handleKeyPress(event)">
         <button onclick="handleSearch()" class="absolute right-2 top-2 text-gray-500 hover:text-gray-900">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M12.9 14.32a8 8 0 111.414-1.415l4.348 4.348a1 1 0 01-1.415 1.415l-4.347-4.348zM8 14A6 6 0 108 2a6 6 0 000 12z" clip-rule="evenodd" />
           </svg>
         </button>
-      </div>
+      </div>      
     </div>
   </header>
 
@@ -169,7 +170,7 @@
         // Loop through each card
         cards.forEach(card => {
           const dataStructure = card.getAttribute('data-structure');
-    
+      
           if (dataStructure.includes(query)) {
             card.style.display = "block";  // Show the card
             found = true;
@@ -183,9 +184,13 @@
           alert("No results found for: " + query);
         }
       }
+    
+      function handleKeyPress(event) {
+        if (event.key === 'Enter') {
+          handleSearch();
+        }
+      }
     </script>
-  
-
-</body>
-
-</html>
+    
+    </body>
+    </html>
